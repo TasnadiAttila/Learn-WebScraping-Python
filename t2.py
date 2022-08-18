@@ -3,23 +3,31 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 path = "C:\Program Files (x86)\chromedriver.exe"
 driver = webdriver.Chrome(path)
-#driver.get("https://bet.szerencsejatek.hu/jatekok/skandinavlotto/sorsolasok/")
-driver.get("https://bet.szerencsejatek.hu/jatekok/otoslotto/sorsolasok")
+driver.get("https://bet.szerencsejatek.hu/jatekok/skandinavlotto/sorsolasok/")
+#driver.get("https://bet.szerencsejatek.hu/jatekok/otoslotto/sorsolasok")
 #driver.get("https://bet.szerencsejatek.hu/jatekok/hatoslotto/sorsolasok")
 
 #papirrol kezzel beolvasott stuff
-Mezo1 = [1,2,49,4,83,4]
-Mezo2 = [6,7,49,9,10,6]
-Mezo3 = [11,12,13,14,18,5]
-Mezo4 = [15,16,83,18,19,45]
-Mezo5 = [49,11,52,43,19,74]
-Mezo6 = [49,51,54,62,83,4]
+Mezo1 = [1,4,10,18,22,31,34]
+Mezo2 = [3,5,16,18,24,30,35]
+Mezo3 = [3,5,7,14,24,25,30]
+Mezo4 = [1,2,6,14,19,30,31]
+Mezo5 = [1,2,11,17,19,23,29]
+Mezo6 = [2,4,12,18,21,23,35]
+
+#Mezo1 = []
+#Mezo2 = []
+#Mezo3 = []
+#Mezo4 = []
+#Mezo5 = []
+#Mezo6 = []
+
 #autoAccpetCookies
 cookie = driver.find_element(By.XPATH,'//button[@id="js-accept-all"]')
 cookie.click()
 
 #XD
-ownWeek = 29
+ownWeek = 32
 
 #get current week
 def getCurrentWeek():
@@ -75,10 +83,7 @@ if(len(WinningNumbers) == 5 or len(WinningNumbers) == 6):
             if(WinningNumbers[j] in listB[i]):
                 a += 1
         print(str(i+1) + ". sorban ennyi eggyezés van: " + str(a))            
-
-
-if(len(WinningNumbers) == 14):
-
+elif(len(WinningNumbers) == 14):
     for i in range(len(listB)):
         a = 0
         for j in range(len(list1)):
@@ -86,12 +91,12 @@ if(len(WinningNumbers) == 14):
                 a += 1
         print("Első sor: " + str(i+1) + ". sorban ennyi eggyezés van: " + str(a))
 
-    for i in range(len(listB)):
-        a = 0
-        for j in range(len(list2)):
-            if(list2[j] in listB[i]):
-                a += 1
-        print("Második sor: " + str(i+1) + ". sorban ennyi eggyezés van: " + str(a))
+    for k in range(len(listB)):
+        b = 0
+        for l in range(len(list2)):
+            if(list2[l] in listB[k]):
+                b += 1
+        print("Második: " + str(k+1) + ". sorban ennyi eggyezés van: " + str(b))
 
 
 driver.close()
